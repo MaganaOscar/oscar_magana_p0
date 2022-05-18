@@ -3,17 +3,20 @@ package dao;
 import java.util.List;
 
 import exception.NoJointUserExistsException;
+import exception.SystemException;
 import model.UserPOJO;
 
 public interface UserDao {
 	
-	UserPOJO addUser(UserPOJO userPojo);
+	UserPOJO addUser(UserPOJO userPojo) throws SystemException;
 	
-	UserPOJO updateUser(UserPOJO userPojo);
+	UserPOJO updateUser(UserPOJO userPojo) throws SystemException;
 	
-	void deleteUser(int userID);
+	UserPOJO getUser(int userID) throws SystemException;
 	
-	List<UserPOJO> getJointAccountUsers (int accountID) throws NoJointUserExistsException;	
+	void deleteUser(int userID) throws SystemException;
 	
-	UserPOJO getUser(int userID);
+	List<UserPOJO> getJointAccountUsers (int accountID) throws NoJointUserExistsException, SystemException;	
+	
+	int validateUser(String username, String password) throws SystemException;
 }

@@ -3,17 +3,16 @@ package dao;
 import java.util.List;
 
 import exception.NoBankAccountException;
+import exception.SystemException;
 import model.BankAccountPOJO;
 
 public interface BankAccountDao {
 	
-	BankAccountPOJO addAccountToUser(BankAccountPOJO accountPojo, int userID);
+	BankAccountPOJO addAccountToUser(String accountType, int userID) throws SystemException;
 	
-	BankAccountPOJO updateAccount(BankAccountPOJO accountPojo);
+	BankAccountPOJO updateBalance(BankAccountPOJO account, double amount) throws SystemException;
 	
-	void deleteAccount(int accountID);
+	void deleteAccount(int accountID) throws SystemException;
 	
-	List<BankAccountPOJO> getUserBankAccounts(int userID, int accountID) throws NoBankAccountException;
-	
-	BankAccountPOJO getBankAccount(int accountID);
+	List<BankAccountPOJO> getUserBankAccounts(int userID) throws NoBankAccountException, SystemException;
 }

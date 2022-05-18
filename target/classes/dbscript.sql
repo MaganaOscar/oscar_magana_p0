@@ -1,3 +1,5 @@
+CREATE EXTENSION pgcrypto;
+
 CREATE TABLE users (
 	user_id int PRIMARY KEY GENERATED ALWAYS AS IDENTITY,
 	username varchar(255) NOT NULL UNIQUE,
@@ -6,7 +8,7 @@ CREATE TABLE users (
 	
 CREATE TABLE bank_accounts (
 	account_id int PRIMARY KEY GENERATED ALWAYS AS IDENTITY,
-	account_type varchar(1) NOT NULL,
+	account_type varchar(25) NOT NULL,
 	balance numeric NOT NULL
 	);
 	

@@ -9,6 +9,17 @@ public class UserPOJO {
 		super();
 	}
 	
+	public UserPOJO(int userID, String username) {
+		super();
+		this.userID = userID;
+		this.username = username;
+	}
+	
+	public UserPOJO(String username, String password) {
+		super();
+		this.username = username;
+		this.password = password;
+	}
 	public UserPOJO(int userID, String username, String password) {
 		super();
 		this.userID = userID;

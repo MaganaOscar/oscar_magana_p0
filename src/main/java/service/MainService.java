@@ -4,27 +4,30 @@ import java.util.List;
 
 import exception.NoBankAccountException;
 import exception.NoJointUserExistsException;
+import exception.SystemException;
 import model.BankAccountPOJO;
 import model.UserPOJO;
 
 public interface MainService {
-	UserPOJO addUser(UserPOJO userPojo);
+	UserPOJO addUser(UserPOJO userPojo) throws SystemException;
 	
-	UserPOJO updateUser(UserPOJO userPojo);
+	UserPOJO updateUser(UserPOJO userPojo) throws SystemException;
 	
-	void deleteUser(int userID);
+	UserPOJO getUser(int userID) throws SystemException;
 	
-	List<UserPOJO> getJointAccountUsers (int accountID) throws NoJointUserExistsException;	
+	void deleteUser(int userID) throws SystemException;
 	
-	UserPOJO getUser(int userID);
+	List<UserPOJO> getJointAccountUsers (int accountID) throws NoJointUserExistsException, SystemException;	
 	
-	BankAccountPOJO addAccountToUser(BankAccountPOJO accountPojo, int userID);
+	int validateUser(String username, String password) throws SystemException;
 	
-	BankAccountPOJO updateAccount(BankAccountPOJO accountPojo);
+	BankAccountPOJO addAccountToUser(String accountType, int userID) throws SystemException;
 	
-	void deleteAccount(int accountID);
+	BankAccountPOJO updateBalance(BankAccountPOJO account, double amount) throws SystemException;
 	
-	List<BankAccountPOJO> getUserBankAccounts(int userID, int accountID) throws NoBankAccountException;
+	void deleteAccount(int accountID) throws SystemException;
 	
-	BankAccountPOJO getBankAccount(int accountID);
+	List<BankAccountPOJO> getUserBankAccounts(int userID) throws NoBankAccountException, SystemException;
+	
+	BankAccountPOJO getBankAccount(int accountID) throws SystemException;
 }
